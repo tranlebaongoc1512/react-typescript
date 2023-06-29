@@ -1,38 +1,201 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+* {
+  font-family: "Raleway", sans-serif !important;
+}
+.container {
+  position: relative;
+  min-height: calc(100vh - 60px);
+  padding-bottom: 60px;
+}
+.component-container {
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+.slide-left {
+  position: absolute;
+  height: 100%;
+  width: 10%;
+  left: 0;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  opacity: 0;
+}
+.slide-left:hover {
+  opacity: 1;
+}
+.slide-left svg {
+  height: 10%;
+}
+.slide-right {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 10%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  opacity: 0;
+}
+.slide-right svg {
+  position: absolute;
+  right: 0;
+  height: 10%;
+}
+.slide-right:hover {
+  opacity: 1;
+}
+.slider {
+  position: relative;
+  height: 30vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.slide {
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: all 0.5s ease;
+}
+
+.slide img {
+  height: 30vh;
+  width: 100vw;
+  object-fit: cover;
+}
+
+.current-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+.switch-mode {
+  background: transparent;
+  border: none;
+  color: inherit;
+}
+.detail-container {
+  position: relative;
+}
+.detail {
+  box-sizing: border-box;
+  color: inherit;
+  padding: 30px 30px 0 30px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.detail-trailer {
+  width: 100%;
+  height: 30vh;
+}
+.detail-youtube {
+  height: 100%;
+}
+.detail-img {
+  width: 200px;
+  border-radius: 5px;
+}
+.detail-info {
+  margin-top: 20px;
+  text-align: justify;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header a {
+  text-decoration: none !important;
+  color: inherit !important;
+  text-transform: capitalize !important;
+  font-size: 16px !important;
+}
+.menu-item a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+.active {
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+footer {
+  width: 100%;
+  height: 50px;
+  box-shadow: 0 -5px 10px -5px rgb(18, 18, 18);
+  padding: 5px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+.pagination ul li button {
+  color: inherit;
+}
+.loading {
+  margin-top: 37vh;
+  text-align: center;
+}
+.loading img {
+  width: 50px;
+}
+.btn:hover {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.menu-list > div {
+  background-color: transparent;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.not-found {
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 768px) {
+  .detail-trailer {
+    height: 50vh;
   }
-  to {
-    transform: rotate(360deg);
+  .slider {
+    height: 40vh;
+  }
+  .slider img {
+    height: 40vh;
+  }
+}
+@media screen and (min-width: 992px) {
+  .slider {
+    height: 70vh;
+  }
+  .slider img {
+    height: 70vh;
+  }
+}
+@media screen and (min-width: 1350px) {
+  .card-media {
+    height: 360px !important;
+  }
+  .detail-trailer {
+    height: 70vh;
+  }
+  .detail {
+    padding: 30px 200px 0 30px;
+    width: 45vw !important;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    color: white;
+    text-align: left;
+    background-image: linear-gradient(
+      to right,
+      black,
+      black,
+      black,
+      black,
+      transparent
+    );
+  }
+  .detail-youtube {
+    width: 70vw;
+    position: absolute;
+    right: 0;
   }
 }
