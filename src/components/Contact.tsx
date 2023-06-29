@@ -20,7 +20,7 @@ export default function Contact() {
         validationSchema: Yup.object({
             name: Yup.string().required("Required").min(2, "Name must be 2 characters or more"),
             email: Yup.string().required("Required").email("Invalid email"),
-            phone: Yup.string().required('Phone number is required').matches(/^\d{10}$/, 'Phone number must be 10 digits'),
+            phone: Yup.string().required('Phone number is required').matches(/^\d{10}$/, 'Incorrect phone number'),
             problem: Yup.number().integer("Please select valid problem").min(1, 'Please select your problem'),
             detail: Yup.string().required("Required").min(10, "Must be 10 characters or more"),
             agree: Yup.boolean().oneOf([true], "The terms and conditions must be accepted")

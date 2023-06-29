@@ -43,7 +43,8 @@ export default function Main() {
                                     </InputAdornment>
                                 ),
                             }}
-                            sx={{ background: theme.inputBackground, borderRadius: '4px', width: '40%' }}
+                            className='search'
+                            sx={{ background: theme.inputBackground }}
                         />
                     </div>
                     <FilmsPresentation films={listOfFilms} />

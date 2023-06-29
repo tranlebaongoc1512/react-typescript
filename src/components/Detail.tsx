@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import YouTube from 'react-youtube';
 import { Grid, Typography, Rating, Button } from '@mui/material'
@@ -25,9 +25,7 @@ export default function Detail() {
         trailer: "",
         rating: 0,
     });
-    if (film.title) {
-        useDocumentTitle(film.title)
-    }
+    useDocumentTitle(String(film.title))
     useEffect(() => {
         async function getFilmData() {
             const film: Film = await getFilm(Number(filmId.id));

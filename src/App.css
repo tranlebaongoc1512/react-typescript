@@ -150,7 +150,14 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
+.search {
+  border-radius: 4px;
+  width: 80%;
+}
 @media screen and (min-width: 768px) {
+  .search {
+    width: 60%;
+  }
   .detail-trailer {
     height: 50vh;
   }
@@ -162,6 +169,9 @@ footer {
   }
 }
 @media screen and (min-width: 992px) {
+  .search {
+    width: 50%;
+  }
   .slider {
     height: 70vh;
   }

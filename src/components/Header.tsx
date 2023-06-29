@@ -23,6 +23,11 @@ export default function Header() {
     const { theme, toggle } = useTheme();
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [anchorElUserLogin, setAnchorElUserLogin] = React.useState<null | HTMLElement>(null);
+    const handleSignOut = () => {
+        logOut();
+        handleCloseUserLogin();
+    }
     const location = useLocation();
     let title = 'React App';
     pages.forEach(page => {
@@ -42,6 +47,14 @@ export default function Header() {
     };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
+    };
+
+    const handleOpenUserLogin = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUserLogin(event.currentTarget);
+    };
+
+    const handleCloseUserLogin = () => {
+        setAnchorElUserLogin(null);
     };
 
     const handleCloseNavMenu = () => {
@@ -84,7 +97,7 @@ export default function Header() {
                             display: { xs: 'block', sm: 'none' },
                         }}
                         MenuListProps={{
-                            style: { background: theme.cardBackground, color: theme.color},
+                            style: { background: theme.cardBackground, color: theme.color },
                         }}
                         className='menu-list'
                     >
@@ -100,17 +113,17 @@ export default function Header() {
                                 <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
                                 <IconButton
                                     size="small"
-                                    aria-controls="menu-userbar"
+                                    aria-controls="menu-userlogin"
                                     aria-haspopup="true"
-                                    onClick={handleOpenUserMenu}
+                                    onClick={handleOpenUserLogin}
                                     color="inherit"
                                 >
                                     <Avatar alt={user.email} src={user.photoURL} />
                                 </IconButton>
                             </div>
                             <Menu
-                                id="menu-userbar"
-                                anchorEl={anchorElUser}
+                                id="menu-userlogin"
+                                anchorEl={anchorElUserLogin}
                                 anchorOrigin={{
                                     vertical: 'bottom',
                                     horizontal: 'right',
@@ -120,21 +133,21 @@ export default function Header() {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
+                                open={Boolean(anchorElUserLogin)}
+                                onClose={handleCloseUserLogin}
                                 sx={{
                                     display: { xs: 'block', sm: 'none' },
                                 }}
                                 MenuListProps={{
-                                    style: { background: theme.cardBackground, color: theme.color},
+                                    style: { background: theme.cardBackground, color: theme.color },
                                 }}
                                 className='menu-list'
                             >
-                                <MenuItem onClick={handleCloseUserMenu} className='menu-item'>
+                                <MenuItem onClick={handleCloseUserLogin} className='menu-item'>
                                     <Link className={location.pathname === '/add-film' ? "active" : ""} to='/add-film'>Add Film</Link>
                                 </MenuItem>
                                 <MenuItem className='menu-item'>
-                                    <Typography onClick={logOut}>Logout</Typography>
+                                    <Typography onClick={handleSignOut}>Logout</Typography>
                                 </MenuItem>
                             </Menu>
                         </>
@@ -170,7 +183,7 @@ export default function Header() {
                                     display: { xs: 'block', sm: 'none' },
                                 }}
                                 MenuListProps={{
-                                    style: { background: theme.cardBackground, color: theme.color},
+                                    style: { background: theme.cardBackground, color: theme.color },
                                 }}
                                 className='menu-list'
                             >
@@ -193,16 +206,16 @@ export default function Header() {
                         <button className='switch-mode' onClick={toggle}><FontAwesomeIcon style={{ height: '15px', marginRight: '5px' }} icon={faLightbulb} /></button>
                         <IconButton
                             size="small"
-                            aria-controls="menu-userbar"
+                            aria-controls="menu-userlogin"
                             aria-haspopup="true"
-                            onClick={handleOpenUserMenu}
+                            onClick={handleOpenUserLogin}
                             color="inherit"
                         >
                             <Avatar alt={user.email} src={user.photoURL} />
                         </IconButton>
                         <Menu
-                            id="menu-userbar"
-                            anchorEl={anchorElUser}
+                            id="menu-userlogin"
+                            anchorEl={anchorElUserLogin}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
@@ -212,18 +225,18 @@ export default function Header() {
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                            open={Boolean(anchorElUserLogin)}
+                            onClose={handleCloseUserLogin}
                             MenuListProps={{
-                                style: { background: theme.cardBackground, color: theme.color},
+                                style: { background: theme.cardBackground, color: theme.color },
                             }}
                             className='menu-list'
                         >
-                            <MenuItem onClick={handleCloseUserMenu} className='menu-item'>
+                            <MenuItem onClick={handleCloseUserLogin} className='menu-item'>
                                 <Link className={location.pathname === '/add-film' ? "active" : ""} to='/add-film'>Add Film</Link>
                             </MenuItem>
                             <MenuItem className='menu-item'>
-                                <Typography onClick={logOut}>Logout</Typography>
+                                <Typography onClick={handleSignOut}>Logout</Typography>
                             </MenuItem>
                         </Menu>
                     </Box>
